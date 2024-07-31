@@ -5,6 +5,7 @@ This is a demo showcasing ZoKrates library as a part of introduction to zero-kno
 1. Make sure you have [ZoKrates](https://zokrates.github.io/gettingstarted.html) installed
 2. Make sure you have [Node.js](https://nodejs.org) installed
 3. Make sure you have [Foundry](https://book.getfoundry.sh/getting-started/installation) installed
+4. Run `forge install` to fetch dependencies
 
 ## Verifier side
 Perform these steps inside the `verifier/` folder.
