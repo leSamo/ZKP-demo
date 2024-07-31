@@ -8,26 +8,40 @@ contract Token is ERC20{
 
     uint256[] private numbers;
 
-    function addressToUint256(address a) internal pure returns (uint256) {
-        return uint256(uint160(a));
-    }
-
     constructor(address _verifierContract, uint256[] memory _numbers) ERC20("ZeroKnowledgeToken", "ZKTK") {
         verifierContract = Verifier(_verifierContract);
 
         numbers = _numbers;
     }
 
-    function solve(Verifier.Proof memory proof, uint[3] memory input) public returns (bool) {
-        require(addressToUint256(msg.sender) == input[1], "Sender address does not match the proof parameter.");
+    function addressToUint256(address a) internal pure returns (uint256) {
+        return uint256(uint160(a));
+    }
 
-        if (verifierContract.verifyTx(proof, input)) {
-            _mint(msg.sender, 1e18);
+    function isNumberListed(uint element) public view returns (bool) {
+        for (uint i = 0; i < numbers.length; i++) {
+            if (numbers[i] == element) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-            return true;
-        }
-        else {
-            return false;
-        }
+    function solve(Verifier.Proof memory proof, uint[3] memory input) public {
+        uint n = input[0];
+        uint addr = input[1];
+
+        require(isNumberListed(n));
+        require(addressToUint256(msg.sender) == addr, "Sender address does not match the proof parameter.");
+        require(verifierContract.verifyTx(proof, input));
+
+        // Here should be some code which removes the solved n from
+        // the numbers array to prevent getting reward for the same numbers
+
+        _mint(msg.sender, 1e18);
+    }
+
+    function getAvailableNumbers() public view returns (uint256[] memory) {
+        return numbers;
     }
 }
