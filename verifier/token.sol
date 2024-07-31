@@ -1,9 +1,9 @@
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20.sol";
 import "./verifier.sol";
 
-contract Token is ERC20{
+contract Token is ERC20 {
     Verifier verifierContract;
 
     uint256[] private numbers;

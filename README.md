@@ -1,4 +1,5 @@
 # ZoKrates demo -- Rewarding integer factorization
+This is a demo showcasing ZoKrates library as a part of introduction to zero-knowledge proofs (`see slides.pdf`).
 
 ## Prerequisites
 1. Make sure you have [ZoKrates](https://zokrates.github.io/gettingstarted.html) installed
@@ -15,7 +16,7 @@ Perform these steps inside the `verifier/` folder.
 4. Copy `proving.key` into the `prover/` folder
 
 ### Deploying contracts
-There is an ERC20 contract prepared inside `token.sol`. This contract hooks onto the verifier contract and uses it to verify the proof. If the proof is valid, tokens are minted to the sender address.
+There is an [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) contract prepared inside `token.sol`. This contract hooks onto the verifier contract and uses it to verify the proof. If the proof is valid, tokens are minted to the sender address.
 
 1. Start local network with `anvil` inside a second terminal window
 2. Deploy verifier contract with `forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 verifier/verifier.sol:Verifier`
@@ -30,7 +31,8 @@ Perform these steps inside the `prover/` folder. You should have `proving.key` i
 3. Generate the proof with `zokrates generate-proof`
 
 ### Testing contracts
-1. Copy `Token.json` ABI from `out/token.sol/` into the `web3/` folder
-2. Copy `proof.json` into the `web3/` folder
-3. Replace `tokenContractAddress` inside `app.js`
-4. Navigate to  the `web3/` folder and run `node app.js`
+1. Run `npm install` inside `web3/` folder to install the `web3` package
+2. Copy `Token.json` ABI from `out/token.sol/` into the `web3/` folder
+3. Copy `proof.json` into the `web3/` folder
+4. Replace `tokenContractAddress` inside `app.js`
+5. Navigate to  the `web3/` folder and run `node app.js`

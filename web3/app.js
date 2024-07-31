@@ -2,9 +2,12 @@ const { Web3 } = require('web3');
 const abi = require('./Token.json');
 const proof = require('./proof.json');
 
+// change this URL if you are not using anvil
 var web3 = new Web3('http://localhost:8545');
 
+// update this value after Token contract deployment
 const tokenContractAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+
 const walletAddress = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
 
 let contract = new web3.eth.Contract(abi.abi, tokenContractAddress, {
