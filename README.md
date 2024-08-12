@@ -1,5 +1,5 @@
 # ZoKrates demo -- Rewarding integer factorization
-This is a demo showcasing ZoKrates library as a part of introduction to zero-knowledge proofs (`see slides.pdf`).
+This is a demo showcasing ZoKrates library as a part of introduction to zero-knowledge proofs (see `slides.pdf`).
 
 ## Prerequisites
 1. Make sure you have [ZoKrates](https://zokrates.github.io/gettingstarted.html) installed
@@ -10,7 +10,7 @@ This is a demo showcasing ZoKrates library as a part of introduction to zero-kno
 ## Verifier side
 Perform these steps inside the `verifier/` folder.
 
-### Perform trusted setup and export contract
+### Performing trusted setup and exporting contract
 1. Compile program into aritmetic circuit with `zokrates compile -i program.zok`
 2. Generate proving and verification keys with `zokrates setup`
 3. Generate smart contract with `zokrates export-verifier`
@@ -21,7 +21,7 @@ There is an [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc
 
 1. Start local network with `anvil` inside a second terminal window
 2. Deploy verifier contract with `forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 verifier/verifier.sol:Verifier`
-3. Deploy token contract with `forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 verifier/token.sol:Token --constructor-args <verifier contract address from the previous command> [55,77,143]` command
+3. Deploy token contract with `forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 verifier/token.sol:Token --constructor-args <verifier contract address from the previous command> [55,77,143]`
 
 ## Prover side
 Perform these steps inside the `prover/` folder. You should have `proving.key` inside your `prover/` folder from the previous steps.
